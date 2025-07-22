@@ -1,5 +1,9 @@
 
-<!DOCTYPE html>
+
+# حفظ نسخة HTML المعدلة التي تم إعدادها في المستند المفتوح
+html_path = "/mnt/data/index.html"
+
+canvas_html = '''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -62,13 +66,13 @@
 
   <div class="result" id="resultBox">
     <h2>النتيجة:</h2>
-    <p><strong>الاسم:</strong> أحمد محمد عبدالعزيز</p>
-    <p><strong>المجموع:</strong> 398 من 410</p>
-    <p><strong>النسبة المئوية:</strong> 97.1%</p>
-    <p><strong>الترتيب على المدرسة:</strong> 2</p>
-    <p><strong>الترتيب على المديرية:</strong> 7</p>
-    <p><strong>الترتيب على المحافظة:</strong> 15</p>
-    <p><strong>الترتيب على الجمهورية:</strong> 412</p>
+    <p id="studentName"></p>
+    <p id="studentTotal"></p>
+    <p id="studentPercentage"></p>
+    <p id="schoolRank"></p>
+    <p id="regionRank"></p>
+    <p id="governorateRank"></p>
+    <p id="nationRank"></p>
   </div>
 
   <footer>
@@ -81,14 +85,37 @@
       const seat = document.getElementById('seatNumber').value;
       const resultBox = document.getElementById('resultBox');
 
-      if (seat.length !== 6) {
-        alert('من فضلك أدخل رقم جلوس صحيح مكون من 6 أرقام');
+      if (!/^\\d{6,7}$/.test(seat)) {
+        alert('من فضلك أدخل رقم جلوس صحيح مكون من 6 أو 7 أرقام');
         return;
       }
 
-      // مؤقتًا: عرض نتيجة وهمية لأي رقم جلوس
+      // بيانات الطالب
+      if (seat === "1273612") {
+        document.getElementById('studentName').innerHTML = '<strong>الاسم:</strong> ملك زياد صابر';
+        document.getElementById('studentTotal').innerHTML = '<strong>المجموع:</strong> 401 من 410';
+        document.getElementById('studentPercentage').innerHTML = '<strong>النسبة المئوية:</strong> 97.8%';
+        document.getElementById('schoolRank').innerHTML = '<strong>الترتيب على المدرسة:</strong> 1';
+        document.getElementById('regionRank').innerHTML = '<strong>الترتيب على المديرية:</strong> 3';
+        document.getElementById('governorateRank').innerHTML = '<strong>الترتيب على المحافظة:</strong> 9';
+        document.getElementById('nationRank').innerHTML = '<strong>الترتيب على الجمهورية:</strong> 162';
+      } else {
+        document.getElementById('studentName').innerHTML = '<strong>الاسم:</strong> أحمد محمد عبدالعزيز';
+        document.getElementById('studentTotal').innerHTML = '<strong>المجموع:</strong> 398 من 410';
+        document.getElementById('studentPercentage').innerHTML = '<strong>النسبة المئوية:</strong> 97.1%';
+        document.getElementById('schoolRank').innerHTML = '<strong>الترتيب على المدرسة:</strong> 2';
+        document.getElementById('regionRank').innerHTML = '<strong>الترتيب على المديرية:</strong> 7';
+        document.getElementById('governorateRank').innerHTML = '<strong>الترتيب على المحافظة:</strong> 15';
+        document.getElementById('nationRank').innerHTML = '<strong>الترتيب على الجمهورية:</strong> 412';
+      }
+
       resultBox.style.display = 'block';
     }
   </script>
 </body>
-</html>
+</html>'''
+
+with open(html_path, "w", encoding="utf-8") as file:
+    file.write(canvas_html)
+
+html_path
