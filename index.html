@@ -55,7 +55,7 @@
   <h1>نتيجة الثانوية العامة 2025</h1>
   <p class="message">بنبارك لكل طلاب الثانوية العامة، ونتمنى لكم مستقبل مشرق مليء بالنجاحات 🌟</p>
   <p>من فضلك أدخل رقم الجلوس:</p>
-  <input type="text" id="seatNumber" placeholder="رقم الجلوس" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+  <input type="text" id="seatNumber" placeholder="من فضلك ادخل رقم الجلوس " oninput="this.value = this.value.replace(/[^0-9]/g, '')">
   <br>
   <button onclick="searchResult()">بحث</button>
 
@@ -80,13 +80,16 @@
       const seat = document.getElementById('seatNumber').value;
       const resultBox = document.getElementById('resultBox');
 
-      // تعديل الشرط للتحقق من طول الرقم
-      if (seat.length < 6 || seat.length > 9) {
-        alert('من فضلك أدخل رقم جلوس صحيح مكون من 6 إلى 9 أرقام');
+      if (seat === '') {
+        alert('من فضلك أدخل رقم الجلوس');
         return;
       }
 
-      // مؤقتًا: عرض نتيجة وهمية لأي رقم جلوس
+      if (seat.length < 6 || seat.length > 9) {
+        alert('رقم الجلوس يجب أن يكون بين 6 و9 أرقام');
+        return;
+      }
+
       resultBox.style.display = 'block';
     }
   </script>
