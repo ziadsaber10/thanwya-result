@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نتيجة الثانوية العامة</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f5f5f5;
+      text-align: center;
+      padding: 40px;
+      direction: rtl;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .message {
+      margin: 20px 0;
+      font-size: 18px;
+      color: #27ae60;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 18px;
+      width: 300px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 10px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+    footer {
+      margin-top: 60px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <h1>نتيجة الثانوية العامة 2025</h1>
+  <p class="message">بنبارك لكل طلاب الثانوية العامة، ونتمنى لكم مستقبل مشرق مليء بالنجاحات 🌟</p>
+  <p>من فضلك أدخل رقم الجلوس:</p>
+  <input type="text" id="seatNumber" placeholder="رقم الجلوس" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+  <br>
+  <button onclick="searchResult()">بحث</button>
+
+  <div class="result" id="resultBox">
+    <h2>النتيجة:</h2>
+    <p><strong>الاسم:</strong> أحمد محمد عبدالعزيز</p>
+    <p><strong>المجموع:</strong> 398 من 410</p>
+    <p><strong>النسبة المئوية:</strong> 97.1%</p>
+    <p><strong>الترتيب على المدرسة:</strong> 2</p>
+    <p><strong>الترتيب على المديرية:</strong> 7</p>
+    <p><strong>الترتيب على المحافظة:</strong> 15</p>
+    <p><strong>الترتيب على الجمهورية:</strong> 412</p>
+  </div>
+
+  <footer>
+    إعداد المهندس زياد صابر عبدالفتاح حسين روميه<br>
+    مع أطيب التمنيات بالنجاح والتوفيق لكل أبنائنا وبناتنا 💚📚
+  </footer>
+
+  <script>
+    function searchResult() {
+      const seat = document.getElementById('seatNumber').value;
+      const resultBox = document.getElementById('resultBox');
+
+      if (seat.length !== 6) {
+        alert('من فضلك أدخل رقم جلوس صحيح مكون من 6 أرقام');
+        return;
+      }
+
+      // مؤقتًا: عرض نتيجة وهمية لأي رقم جلوس
+      resultBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
